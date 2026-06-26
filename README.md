@@ -1,4 +1,26 @@
-# googletest
+# justを使った場合
+
+## セットアップ
+
+```bash
+$ just setup
+```
+
+## 実行
+
+```bash
+$ just run
+```
+
+## テスト
+
+```bash
+$ just test
+```
+
+# justを使わない場合
+
+## googletest
 
 ```bash
 $ mkdir -p subprojects
@@ -6,26 +28,26 @@ $ meson wrap install gtest
 $ meson subprojects download
 ```
 
-# コンフィグレーション
+## コンフィグレーション
 
 ```bash
 $ meson setup build
 ```
 
-# ビルド
+## ビルド
 
 ```bash
 $ meson compile -C build
 ```
 
-# サンプルの実行
+## サンプルの実行
 
 ```bash
 $ ./build/src/app
 Hello World!
 ```
 
-# テストの実行
+## テストの実行
 
 ```bash
 $ meson test -C build
