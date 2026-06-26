@@ -1,12 +1,11 @@
-project('test_helloworld',
-        'cpp',
-        default_options : [
-                'warning_level=3',
-                'cpp_std=gnu++20'
-        ])
+gtest_proj = subproject('gtest')
+gtest_main_dep = gtest_proj.get_variable('gtest_main_dep')
 
-gtest = dependency('gtest', main : false, method : 'system')
+test_hello = executable('test_hello',
+  'test_hello.cpp',
+  dependencies : [gtest_main_dep],
+  link_with : app_lib,
+  include_directories : app_inc
+)
 
-src = ['test_hello.cpp']
-e = executable('test_hello', src, dependencies : gtest)
-test('gtest test_hello', e, protocol : 'gtest')
+test('test_hello', test_hello)

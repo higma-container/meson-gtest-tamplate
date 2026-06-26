@@ -1,9 +1,9 @@
-project('helloworld',
-        'cpp',
-        default_options : [
-                'warning_level=3',
-                'cpp_std=gnu++20'
-        ])
+app_lib = static_library('app_lib',
+  'hello.cpp',
+  include_directories : app_inc
+)
 
-src = ['hello.cpp']
-executable('hello', src)
+executable('app', 'main.cpp',
+  link_with : app_lib,
+  include_directories : app_inc
+)

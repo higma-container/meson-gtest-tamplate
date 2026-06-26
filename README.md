@@ -1,48 +1,44 @@
-# サンプルの構成
+# googletest
 
 ```bash
-$ meson setup src build
+$ mkdir -p subprojects
+$ meson wrap install gtest
+$ meson subprojects download
 ```
 
-# サンプルのビルド
+# コンフィグレーション
 
 ```bash
-$ cd build
-$ meson compile
+$ meson setup build
+```
+
+# ビルド
+
+```bash
+$ meson compile -C build
 ```
 
 # サンプルの実行
 
 ```bash
-$ ./hello
+$ ./build/src/app
 Hello World!
-```
-
-# テストの構成
-
-```bash
-$ meson setup test build_test
-```
-
-# テストのビルド
-
-```bash
-$ cd build_test
-$ meson compile
 ```
 
 # テストの実行
 
 ```bash
-$ ./test_hello
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from HelloTest
-[ RUN      ] HelloTest.BasicAssertions
-[       OK ] HelloTest.BasicAssertions (0 ms)
-[----------] 1 test from HelloTest (0 ms total)
+$ meson test -C build
+ninja: Entering directory `/work/build'
+ninja: no work to do.
+1/1 test_hello        OK              0.00s
 
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
+Ok:                 1   
+Expected Fail:      0   
+Fail:               0   
+Unexpected Pass:    0   
+Skipped:            0   
+Timeout:            0   
+
+Full log written to /work/build/meson-logs/testlog.txt
 ```
